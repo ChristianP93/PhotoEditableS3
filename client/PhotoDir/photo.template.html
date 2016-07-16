@@ -1,0 +1,39 @@
+<div ng-if="!vm.ciao">
+  <div id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h3 class="modal-title" translate> Upload </h3>
+    </div>
+    <div class="modal-body photoDirWrapperBody">
+      <canvas ng-show="vm.cropper.sourceImage" keep-aspect="true" min-width="20" min-height="20" width="500" height="400" id="canvas" image-cropper image="vm.cropper.sourceImage" cropped-image="vm.cropper.croppedImage" crop-width="300" crop-height="300"  touch-radius="30" crop-area-bounds="vm.bounds"></canvas>
+      <div ng-show="!vm.cropper.sourceImage" class="row-centered col-md-12 photoDirWrapperButton">
+        <div class="col-md-6 ButtonCursor colorSpanNoLink uploadPhotoDx fileUploadPhotoDirective">
+          <span class="photoDirButtonModal glyphicon glyphicon-plus"></span> <span class=" PhotoDirTextButton" translate> Upload photo</span>
+          <input type="file" accept="image/gif, image/jpeg, image/png" id="uploadedImg" onchange="angular.element(this).scope().vm.caricaIMG(this);" class="upload" img-cropper-fileread image="vm.cropper.sourceImage"/>
+        </div>
+        <a ng-click="vm.activeWebcam()">
+          <div class="col-md-6 ButtonCursor uploadPhotoSx  fileUploadPhotoDirective">
+            <span class="photoDirButtonModal glyphicon glyphicon-camera"> </span> <span class="PhotoDirTextButton" translate>Snap</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="closeEditImage" ng-if="vm.cropper.sourceImage" closeEditImage class="closeEditImage btn btn-info" class="close" data-dismiss="modal" ng-click="vm.putAndSave()" translate> Save </button>
+    </div>
+  </div>
+</div>
+
+<div ng-if="vm.ciao">
+  <div id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h3 class="modal-title" translate> Snap </h3>
+    </div>
+      <ng-camera ng-if="!vm.photo" countdown="3" output-height="280" output-width="393" viewer-height="320"
+      viewer-width="426" image-format="jpeg" jpeg-quality="100" action-message="Scatta" snapshot="vm.photo"
+      flash-fallback-url="/vendors/webcamjs/webcam.swf" name="avatar-user"></ng-camera>
+      <div>
+        <img ng-if="vm.photo" ng-src="{{vm.photo}}" alt="webcam picture"id="ImgUser"/>
+      </div>
+      <button ng-if="vm.photo" id="closeEditImage" closeEditImage class="closeEditImage btn btn-info" class="close" data-dismiss="modal" ng-click="vm.putAndSaveWeb()" translate>Save</button>
+  </div>
+</div>

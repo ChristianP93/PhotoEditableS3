@@ -1,0 +1,11 @@
+*.DS_Store
+node_modules
+bower_components
+*.log
+*.swp
+config/custom*.json
+scripts/config.js
+build/App
+build/vendors
+build/view
+coverage
