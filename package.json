@@ -4,7 +4,7 @@
   "description": "null",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "tests"
   },
   "keywords": [
     "PhotoDirective",
